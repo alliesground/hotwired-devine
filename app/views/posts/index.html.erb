@@ -1,6 +1,17 @@
+<% content_for :head do %>
+  <meta name="turbo-refresh-method" content="morph">
+  <meta name="turbo-refresh-scroll" content="preserve">
+<% end %>
+
 <p style="color: green"><%= notice %></p>
 
+<h2><%= Time.zone.now %></h2>
+
 <h1>Posts</h1>
+
+<turbo-frame id="new_form" data-turbo-permanent>
+  <%= link_to "New post", new_post_path %>
+</turbo-frame>
 
 <div id="posts">
   <% @posts.each do |post| %>
@@ -10,5 +21,3 @@
     </p>
   <% end %>
 </div>
-
-<%= link_to "New post", new_post_path %>

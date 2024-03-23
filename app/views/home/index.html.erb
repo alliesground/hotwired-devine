@@ -1,0 +1,10 @@
+<h1>Slide Show</h1>
+
+<div id="slideshow" data-controller="slideshow" data-slideshow-index-value="0">
+  <div></div>
+  <% @posts.each do |post| %>
+    <%= render 'slideshow/slide', post: post %>
+  <% end %>
+  <button data-action="slideshow#previous">Previous</button>
+  <button data-action="slideshow#next">Next</button>
+</div>

@@ -7,7 +7,7 @@ feature "managing posts", type: :feature do
       Post.create!(title: "hello pluto")
     end
     scenario "they see list of existing posts" do
-      visit root_path
+      visit posts_path
 
       expect(page).to have_content "hello earth"
       expect(page).to have_content "hello pluto"
