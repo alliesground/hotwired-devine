@@ -1,0 +1,14 @@
+<% content_for :head do %>
+  <meta name="turbo-refresh-method" content="morph">
+  <meta name="turbo-refresh-scroll" content="preserve">
+<% end %>
+
+<h1 class="text-3xl font-bold">Projects</h1>
+
+<div>
+  <%= render "form", project: Project.new %>
+</div>
+
+<div>
+  <%= render @projects %>
+</div>
