@@ -5,10 +5,8 @@
 
 <h1 class="text-3xl font-bold">Projects</h1>
 
-<div>
+<div class="container w-screen">
   <%= render "form", project: Project.new %>
 </div>
 
-<div>
-  <%= render @projects %>
-</div>
+<%= render ProjectsTableComponent.new(projects: @projects) %>

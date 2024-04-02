@@ -64,3 +64,5 @@ group :development do
 end
 
 gem "tailwindcss-rails", "~> 2.3"
+
+gem "view_component", "~> 3.11"
