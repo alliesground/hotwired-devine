@@ -3,10 +3,11 @@
   <meta name="turbo-refresh-scroll" content="preserve">
 <% end %>
 
-<h1 class="header1">Projects</h1>
-
+<h1 class="header1">
+  <%= @project.title %>
+</h2>
 <div class="container w-screen">
-  <%= render "form", project: Project.new %>
+  <%= render 'tasks/form', project: @project, task: @project.tasks.build %>
 </div>
 
-<%= render ProjectsTableComponent.new(projects: @projects) %>
+<%= render TasksTableComponent.new(tasks: @project.tasks) %>

@@ -1,4 +1,5 @@
 class ProjectsController < ApplicationController
+  before_action :set_project, only: %i[ show ]
 
   # GET /projects/index
   def index
@@ -9,6 +10,8 @@ class ProjectsController < ApplicationController
   def new
     @project = Project.new
   end
+
+  def show; end
 
   # POST /projects
   def create
@@ -25,5 +28,9 @@ class ProjectsController < ApplicationController
 
   def project_params
     params.require(:project).permit(:title)
+  end
+
+  def set_project
+    @project = Project.find(params[:id])
   end
 end
