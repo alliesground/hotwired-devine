@@ -7,7 +7,7 @@
   <%= @project.title %>
 </h2>
 <div class="container w-screen">
-  <%= render 'tasks/form', project: @project, task: @project.tasks.build %>
+  <%= render 'tasks/form', project: @project %>
 </div>
 
 <%= render TasksTableComponent.new(tasks: @project.tasks) %>

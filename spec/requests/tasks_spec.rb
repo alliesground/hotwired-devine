@@ -21,4 +21,20 @@ RSpec.describe "Tasks", type: :request do
     end
   end
 
+  describe "DELETE /destroy" do
+    let(:task) { create(:task) }
+
+    subject(:subject_destroy) {
+      delete task_path(task)
+    }
+
+    before { task }
+
+    it "deletes a task" do
+      expect{
+        subject_destroy
+      }.to change(Task, :count).by (-1)
+    end
+  end
+
 end

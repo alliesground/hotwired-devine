@@ -8,6 +8,7 @@ class TasksTableComponent < ViewComponent::Base
   def call
     component = Tables::TableComponent.new(rows: @tasks) do |table|
       table.set_column("Name", &:name)
+      table.set_column("Actions")
     end
 
     render component

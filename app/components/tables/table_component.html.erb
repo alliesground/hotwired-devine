@@ -1,18 +1,23 @@
-<div class="w-full">
-  <table class="table-auto">
-    <thead>
+<div class="relative overflow-x-auto">
+  <table class="table-auto w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+    <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
       <tr>
         <% columns.each do |col| %>
-          <th><%= col[:label] %></th>
+          <th scope="col" class="px-6 py-3"><%= col[:label] %></th>
         <% end %>
       </tr>
     </thead>
     <tbody>
       <% rows.each do |row| %>
-        <tr>
+        <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
           <% columns.each do |col| %>
-            <td><%= col[:block].call(row) %></td>
+            <% if col[:block] %>
+              <td class="px-6 py-4"><%= col[:block].call(row) %></td>
+            <% end %>
           <% end %>
+          <td class="flex items-center px-6 py-4">
+            <%= button_to "Destroy", row, method: :delete, class: "btn-primary" %>
+          </td>
         </tr>
       <% end %>
     </tbody>

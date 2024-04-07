@@ -1,5 +1,6 @@
 class TasksController < ApplicationController
-  before_action :set_project
+  before_action :set_project, only: :create
+  before_action :set_task, only: :destroy
   
   def create
     @task = Task.new(project: @project, **task_params)
@@ -11,10 +12,21 @@ class TasksController < ApplicationController
     end
   end
 
+  def destroy
+    @task.destroy!
+
+    redirect_to project_path(@project), notice: "Task was Successfully deleted"
+  end
+
   private
   
   def task_params
     params.require(:task).permit(:name)
+  end
+
+  def set_task
+    @task = Task.find(params[:id])
+    @project = @task.project
   end
 
   def set_project

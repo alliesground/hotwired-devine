@@ -14,8 +14,8 @@ RSpec.describe TasksTableComponent, type: :component do
   it "renders list of tasks" do
     render_inline(described_class.new(tasks: tasks))
 
-    within '.table-auto' do
-      expect(page).to have_content "Name"
-    end
+    expect(page).to have_content "Name"
+    expect(page).to have_content "Test task"
+    expect(page).to have_content "Destroy"
   end
 end
