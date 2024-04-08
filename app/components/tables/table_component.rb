@@ -19,18 +19,11 @@ class Tables::TableComponent < ViewComponent::Base
 
   class ActionComponent < ViewComponent::Base
     erb_template <<~ERB
-      <td class="flex items-center px-6 py-4">
-        <%= button_to "destroy", @row, method: :delete, class: "btn-primary-red" %>
-      </td>
+      <%= button_to "destroy", @row, method: :delete, class: "btn-primary-red" %>
     ERB
 
-    def initialize(show, row)
-      @show = show
+    def initialize( row)
       @row = row
-    end
-
-    def render?
-      @show
     end
   end
 end

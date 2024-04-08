@@ -15,8 +15,6 @@
               <td class="px-6 py-4"><%= col[:block].call(row) %></td>
             <% end %>
           <% end %>
-
-          <%= render Tables::TableComponent::ActionComponent.new(show_actions, row) %>
         </tr>
       <% end %>
     </tbody>
