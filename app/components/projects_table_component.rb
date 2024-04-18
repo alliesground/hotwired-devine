@@ -8,7 +8,9 @@ class ProjectsTableComponent < ViewComponent::Base
   def call
     component = Tables::TableComponent.new(rows: @projects) do |table|
       table.set_column("Title", &:title)
-      table.set_column("Completion", &:created_at)
+      table.set_column "Completion" do |row|
+        render ProgressBarComponent.new(row)
+      end
     end
 
     render component
