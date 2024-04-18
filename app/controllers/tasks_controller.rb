@@ -1,6 +1,6 @@
 class TasksController < ApplicationController
   before_action :set_project, only: :create
-  before_action :set_task, only: :destroy
+  before_action :set_task, only: %i[destroy complete]
   
   def create
     @task = Task.new(project: @project, **task_params)
@@ -16,6 +16,10 @@ class TasksController < ApplicationController
     @task.destroy!
 
     redirect_to project_path(@project), notice: "Task was Successfully deleted"
+  end
+
+  def complete
+    @task.update_columns(complete: params[:task][:complete])
   end
 
   private

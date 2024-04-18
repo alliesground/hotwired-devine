@@ -11,5 +11,9 @@ Rails.application.routes.draw do
   resources :projects do
     resources :tasks, only: [:new, :create]
   end
-  resources :tasks, only: :destroy
+  resources :tasks, only: :destroy do
+    member do
+      put 'complete'
+    end
+  end
 end

@@ -3,6 +3,7 @@ require 'rails_helper'
 RSpec.describe "Tasks", type: :request do
   let(:project) { create(:project) }
   let(:params) { attributes_for(:task) }
+  let(:task) { create(:task) }
 
   describe "POST /create" do
     subject(:subject_create) {
@@ -22,8 +23,6 @@ RSpec.describe "Tasks", type: :request do
   end
 
   describe "DELETE /destroy" do
-    let(:task) { create(:task) }
-
     subject(:subject_destroy) {
       delete task_path(task)
     }
@@ -37,4 +36,31 @@ RSpec.describe "Tasks", type: :request do
     end
   end
 
+  describe "PUT /complete" do
+    context "when task is marked as complete" do
+      let(:subject_complete) {
+        put complete_task_path(task), params: { task: {complete: "1"} }
+      }
+
+      before { task }
+
+      it "marks a task complete as true" do
+        subject_complete
+        expect(task.reload.complete).to be true
+      end
+    end
+
+    context "when task is marked as incomplete" do
+      let(:subject_complete) {
+        put complete_task_path(task), params: { task: {complete: "0"} }
+      }
+
+      before { task }
+
+      it "marks a task complete as false" do
+        subject_complete
+        expect(task.reload.complete).to be false
+      end
+    end
+  end
 end

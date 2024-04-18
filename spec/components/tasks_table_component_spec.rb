@@ -18,4 +18,10 @@ RSpec.describe TasksTableComponent, type: :component do
     expect(page).to have_content "Test task"
     expect(page).to have_content "Destroy"
   end
+
+  it "renders list of task completion checkbox" do
+    render_inline(described_class.new(tasks: tasks))
+
+    expect(page).to have_unchecked_field('task[complete]')
+  end
 end
