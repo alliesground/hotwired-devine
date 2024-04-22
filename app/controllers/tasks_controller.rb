@@ -19,11 +19,11 @@ class TasksController < ApplicationController
   end
 
   def complete
-    @task.update_columns(complete: params[:task][:complete])
+    @task.update(complete: params[:task][:complete])
   end
 
   private
-  
+
   def task_params
     params.require(:task).permit(:name)
   end
