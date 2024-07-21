@@ -67,3 +67,7 @@ end
 gem "tailwindcss-rails", "~> 2.3"
 
 gem "view_component", "~> 3.11"
+
+gem "faker", "~> 3.3"
+
+gem "pry", "~> 0.14.2"

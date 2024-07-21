@@ -1,0 +1,8 @@
+<%= movies.count if movies.count > 0 %>
+<ul>
+  <% movies.each do |movie| %>
+      <li>
+        <%= highlight(movie.title, params[:query]) %>
+      </li>
+  <% end %>
+</ul>

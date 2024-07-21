@@ -1,0 +1,9 @@
+<%= form_with url:"#{url}",
+              method: :post,
+              data: {controller: "search-form-component"} do |f| %>
+
+              <%= f.search_field :query, data: { action: "search-form-component#submit" } %>
+<% end %>
+
+<div id="search_results" class="z-10 bg-slate-700 text-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
+</div>

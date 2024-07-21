@@ -16,4 +16,6 @@ Rails.application.routes.draw do
       put 'complete'
     end
   end
+  resources :movies, only: :index
+  post "/search", to: "movies#search"
 end
