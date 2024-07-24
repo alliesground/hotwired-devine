@@ -1,6 +1,4 @@
-<turbo-frame id="new_form">
-  <h1>New post</h1>
-
+<%= render ModalComponent.new(title: "new post") do %>
   <%= render "form", post: @post %>
 
   <br>
@@ -8,4 +6,5 @@
   <div>
     <%= link_to "Back to posts", posts_path %>
   </div>
-</turbo-frame>
+<% end %>
+
