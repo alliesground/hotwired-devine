@@ -20,6 +20,7 @@ class TasksController < ApplicationController
 
   def complete
     @task.update(complete: params[:task][:complete])
+    Turbo::StreamsChannel.broadcast_refresh_to(:projects)
   end
 
   private
