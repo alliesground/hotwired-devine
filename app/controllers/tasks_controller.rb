@@ -1,6 +1,7 @@
 class TasksController < ApplicationController
   before_action :set_project, only: :create
   before_action :set_task, only: %i[destroy complete]
+  after_action :broadcast_refresh_to_projects
   
   def create
     @task = Task.new(project: @project, **task_params)
@@ -20,7 +21,6 @@ class TasksController < ApplicationController
 
   def complete
     @task.update(complete: params[:task][:complete])
-    Turbo::StreamsChannel.broadcast_refresh_to(:projects)
   end
 
   private
@@ -36,5 +36,9 @@ class TasksController < ApplicationController
 
   def set_project
     @project = Project.find(params[:project_id])
+  end
+
+  def broadcast_refresh_to_projects
+    Turbo::StreamsChannel.broadcast_refresh_to(:projects)
   end
 end
